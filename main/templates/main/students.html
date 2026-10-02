@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            box-sizing: border-box;
+            background: #f4f6f8;
+        }
+        .container {
+            box-sizing: border-box;
+            width: min(100%, 900px);
+            border: 1px solid #d5dbe0;
+            padding: 32px;
+            text-align: center;
+            border-radius: 10px;
+            font-family: Arial, sans-serif;
+            background: white;
+            box-shadow: 0 4px 16px rgb(0 0 0 / 10%);
+        }
+        table {
+            width: 100%;
+            margin: 24px 0;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #d5dbe0;
+            text-align: left;
+        }
+        th {
+            background: #eef2f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student List</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Enrolled Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                    <tr>
+                        <td>{{ student.first_name }}</td>
+                        <td>{{ student.last_name }}</td>
+                        <td>{{ student.age }}</td>
+                        <td>{{ student.email }}</td>
+                        <td>{{ student.enrolled_date }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">No students found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{% url 'home' %}">Back to Home</a>
+    </div>
+
+</body>
+
+</html>
